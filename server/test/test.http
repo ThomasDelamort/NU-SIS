@@ -1,3 +1,25 @@
 @baseURL = http://localhost:5198
 
-GET {{baseURL}}/ecstacy
+### Create student
+POST {{baseURL}}/api/students
+Content-Type: application/json
+
+{
+    "RfidUid": "3906277695",
+    "FirstName": "Devann Dereck",
+    "LastName": "Villarin",
+    "UniversityId": "2025-1131863",
+    "UniversityEmail": "villarinde@students.nu-cebu.edu.ph",
+    "ContactNumber": "09159676494",
+    "ProfilePicture": null,
+    "EmergencyContactNumber": null
+}
+
+### Get student by RFID
+GET {{baseURL}}/api/students/rfid/3906701135
+
+### Get all students
+GET {{baseURL}}/api/students
+
+### Health check
+GET {{baseURL}}/health-check

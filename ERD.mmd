@@ -1,20 +1,33 @@
 erDiagram
     STUDENTS {
         int student_id PK "PRIMARY KEY"
+        varchar(15) rfid_uid "UNIQUE NOT NULL"
         varchar(50) first_name "NOT NULL"
         varchar(50) last_name "NOT NULL"
         varchar(20) university_id "UNIQUE NOT NULL"
         varchar(255) university_email "NOT NULL"
         varchar(20) contact_number "NULLABLE"
         varchar(255) profile_picture "NULLABLE"
-        varchar(20) emergency_contact_num "NULLABLE"
+        varchar(20) emergency_contact_number "NULLABLE"
         TIMESTATMPZ created_at "NOT NULL"  
     }
 
-    LOGS {
-        int student_id FK "NOT NULL"
-        timestamp time_in "NOT NULL"
-        timestamp time_out "NOT NULL"
+    ADMIN {
+        int admin_id PK "PRIMARY KEY"
+        varchar(255) email "UNIQUE NOT NULL"
+        varchar(255) password_hash "NOT NULL"
+        varchar(50) first_name "NOT NULL"
+        varchar(50) last_name "NOT NULL"
+        TIMESTAMPTZ created_at "NOT NULL"
     }
 
-    STUDENTS||--|{LOGS:"logs onto"
+    DAILY_LOGS {
+        int log_id PK "NOT NULL"
+        int student_id FK "NOT NULL"
+        timestamp time_in "NOT NULL"
+        timestamp time_out "NULLABLE"
+    }
+
+    ADMIN||--|{STUDENTS:"MANAGES"
+    ADMIN||--|{DAILY_LOGS:"VIEW"
+    STUDENTS||--|{DAILY_LOGS:"logs onto"
