@@ -1,0 +1,15 @@
+## .NET / Blazor
+
+bin/
+obj/
+
+*.user
+*.suo
+
+.vs/
+*.vspscc
+*.vssscc
+
+# Build results
+[Dd]ebug/
+[Rr]elease/

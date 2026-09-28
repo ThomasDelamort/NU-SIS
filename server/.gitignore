@@ -1,0 +1,16 @@
+## .NET build artifacts
+bin/
+obj/
+out/
+
+## Visual Studio / Rider
+.vs/
+*.user
+*.suo
+
+## User-specific config
+appsettings.*.local.json
+secrets.json
+
+## Logs
+*.log

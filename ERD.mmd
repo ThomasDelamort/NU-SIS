@@ -6,8 +6,15 @@ erDiagram
         varchar(20) university_id "UNIQUE NOT NULL"
         varchar(50) university_email "NOT NULL"
         varchar(20) contact_number "NULLABLE"
-        varchar(50) course "NOT NULL"
         varchar(100) profile_picture "NULLABLE"
         varchar(20) emergency_contact_num "NULLABLE"
         TIMESTATMPZ created_at "NOT NULL"  
     }
+
+    LOGS {
+        int student_id FK "NOT NULL"
+        timestamp time_in "NOT NULL"
+        timestamp time_out "NOT NULL"
+    }
+
+    STUDENTS||--|{LOGS:"logs onto"
