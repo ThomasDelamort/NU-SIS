@@ -55,10 +55,10 @@ public class StudentsController : ControllerBase
     public async Task<ActionResult<StudentResponse>> Create(StudentCreateRequest request)
     {
         if (await _db.Students.AnyAsync(s => s.RfidUid == request.RfidUid))
-            return Conflict($"A student with RFID '{request.RfidUid}' already exists.");
+            return Conflict($"This student already exists");
 
         if (await _db.Students.AnyAsync(s => s.UniversityId == request.UniversityId))
-            return Conflict($"A student with university ID '{request.UniversityId}' already exists.");
+            return Conflict($"This student already exists");
 
         var student = new Student
         {
